@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/habits">
+    <fragment
+        android:id="@+id/habits"
+        android:name="nulp.mobile.habittracker.fragments.show.HabitsFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_habits" >
+        <action
+            android:id="@+id/action_habits_to_addHabits"
+            app:destination="@id/addHabits" />
+    </fragment>
+    <fragment
+        android:id="@+id/addHabits"
+        android:name="nulp.mobile.habittracker.fragments.add.AddHabitFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_add_habit" >
+        <action
+            android:id="@+id/action_addHabits_to_habits"
+            app:destination="@id/habits" />
+    </fragment>
+</navigation>
