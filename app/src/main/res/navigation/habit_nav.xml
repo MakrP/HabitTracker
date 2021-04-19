@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_habits_to_addHabits"
             app:destination="@id/addHabits" />
+        <action
+            android:id="@+id/action_habits_to_habitDetails"
+            app:destination="@id/habitDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addHabits"
@@ -21,5 +24,32 @@
         <action
             android:id="@+id/action_addHabits_to_habits"
             app:destination="@id/habits" />
+    </fragment>
+    <fragment
+        android:id="@+id/habitDetailsFragment"
+        android:name="nulp.mobile.habittracker.fragments.details.HabitDetailsFragment"
+        android:label="HabitDetailsFragment" >
+        <action
+            android:id="@+id/action_habitDetails_to_habits"
+            app:destination="@id/habits" />
+        <action
+            android:id="@+id/action_habitDetailsFragment_to_editHabitFragment"
+            app:destination="@id/editHabitFragment" />
+        <argument
+            android:name="habit"
+            app:argType="nulp.mobile.habittracker.entity.Habit"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/editHabitFragment"
+        android:name="nulp.mobile.habittracker.fragments.edit.EditHabitFragment"
+        android:label="fragment_edit_habit"
+        tools:layout="@layout/fragment_edit_habit" >
+        <action
+            android:id="@+id/action_editHabit_to_habitDetails"
+            app:destination="@id/habitDetailsFragment" />
+        <argument
+            android:name="habit"
+            app:argType="nulp.mobile.habittracker.entity.Habit" />
     </fragment>
 </navigation>

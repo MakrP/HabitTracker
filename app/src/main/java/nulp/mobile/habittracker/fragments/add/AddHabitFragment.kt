@@ -17,33 +17,32 @@ import nulp.mobile.habittracker.viewmodel.HabitViewModel
 
 class AddHabitFragment : Fragment() {
 
-    private lateinit var viewModel : HabitViewModel
+    private lateinit var viewModel: HabitViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_add_habit, container, false)
-        view.cancelTextView.setOnClickListener { Navigation.findNavController(view).navigate(
-            R.id.action_addHabits_to_habits
-        ) }
+        view.detail_cancel.setOnClickListener {
+            Navigation.findNavController(it).navigate(
+                    R.id.action_addHabits_to_habits
+            )
+        }
         viewModel = ViewModelProvider(this).get(HabitViewModel::class.java)
-        view.saveTextView.setOnClickListener {
+        view.details_edit.setOnClickListener {
             insertHabitInDatabase();
+            Navigation.findNavController(it).navigate(R.id.action_addHabits_to_habits)
         }
         return view
     }
 
     private fun insertHabitInDatabase() {
-        val title = habitTitleEditText.text.toString()
+        val title = add_habit_title_edit_text.text.toString()
         val percentage = 0.0;
-        val habit = Habit(0,title,percentage)
+        val habit = Habit(0, title, percentage)
         viewModel.createHabit(habit)
-        Toast.makeText(requireContext(),"Added to db",Toast.LENGTH_SHORT).show()
-//        val habits = viewModel.getHabits().value
-//        habits?.forEach { Log.i("data",it.toString()) }
-
-
+        Toast.makeText(requireContext(), "Added to db", Toast.LENGTH_SHORT).show()
     }
 
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.habit_item.*
 import nulp.mobile.habittracker.R
 import nulp.mobile.habittracker.adapter.HabitAdapter
 import nulp.mobile.habittracker.viewmodel.HabitViewModel
