@@ -3,27 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/habits">
+    app:startDestination="@id/habitsShowingFragment">
     <fragment
-        android:id="@+id/habits"
+        android:id="@+id/habitsShowingFragment"
         android:name="nulp.mobile.habittracker.fragments.show.HabitsFragment"
-        android:label="fragment_first"
-        tools:layout="@layout/fragment_habits" >
+        android:label="habitsShowingFragment"
+        tools:layout="@layout/fragment_habits">
         <action
             android:id="@+id/action_habits_to_addHabits"
-            app:destination="@id/addHabits" />
+            app:destination="@id/addHabitsFragment" />
         <action
             android:id="@+id/action_habits_to_habitDetails"
             app:destination="@id/habitDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addHabits"
+        android:id="@+id/addHabitsFragment"
         android:name="nulp.mobile.habittracker.fragments.add.AddHabitFragment"
-        android:label="fragment_second"
-        tools:layout="@layout/fragment_add_habit" >
+        android:label="addHabitsFragment"
+        tools:layout="@layout/fragment_add_habit">
         <action
             android:id="@+id/action_addHabits_to_habits"
-            app:destination="@id/habits" />
+            app:destination="@id/habitsShowingFragment" />
+        <action
+            android:id="@+id/action_addHabits_to_goalChoosing"
+            app:destination="@id/goalChoosingFragment" />
+        <action
+            android:id="@+id/action_addHabits_to_regularityChoosing"
+            app:destination="@id/regularityChoosingFragment" />
     </fragment>
     <fragment
         android:id="@+id/habitDetailsFragment"
@@ -31,7 +37,7 @@
         android:label="HabitDetailsFragment" >
         <action
             android:id="@+id/action_habitDetails_to_habits"
-            app:destination="@id/habits" />
+            app:destination="@id/habitsShowingFragment" />
         <action
             android:id="@+id/action_habitDetailsFragment_to_editHabitFragment"
             app:destination="@id/editHabitFragment" />
@@ -51,5 +57,21 @@
         <argument
             android:name="habit"
             app:argType="nulp.mobile.habittracker.entity.Habit" />
+    </fragment>
+    <fragment
+        android:id="@+id/goalChoosingFragment"
+        android:name="nulp.mobile.habittracker.fragments.add.adddetalis.GoalChoosingFragment"
+        android:label="GoalChoosing" >
+        <action
+            android:id="@+id/action_goalChoosingFragment_to_addHabitsFragment"
+            app:destination="@id/addHabitsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/regularityChoosingFragment"
+        android:name="nulp.mobile.habittracker.fragments.add.adddetalis.RegularityChoosingFragment"
+        android:label="regularityChoosingFragment" >
+        <action
+            android:id="@+id/action_regularityChoosingFragment_to_addHabitsFragment"
+            app:destination="@id/addHabitsFragment" />
     </fragment>
 </navigation>

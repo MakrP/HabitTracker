@@ -13,13 +13,13 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_habits.view.*
 import nulp.mobile.habittracker.R
 import nulp.mobile.habittracker.databinding.FragmentHabitsBinding
-import nulp.mobile.habittracker.viewmodel.HabitViewModel
+import nulp.mobile.habittracker.viewmodel.HabitsViewModel
 import java.time.LocalDate
 
 
 class HabitsFragment : Fragment() {
 
-    private lateinit var habitViewModel : HabitViewModel
+    private lateinit var habitViewModel : HabitsViewModel
 
 
 
@@ -27,7 +27,7 @@ class HabitsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        habitViewModel = ViewModelProvider(this).get(HabitViewModel::class.java)
+        habitViewModel = ViewModelProvider(this).get(HabitsViewModel::class.java)
         val habitsBinding = FragmentHabitsBinding.inflate(layoutInflater, container, false)
 //        val view = inflater.inflate(R.layout.fragment_habits, container, false)
         val view = habitsBinding.root

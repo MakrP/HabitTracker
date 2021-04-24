@@ -9,15 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.habit_item.*
 import nulp.mobile.habittracker.R
 import nulp.mobile.habittracker.adapter.HabitAdapter
-import nulp.mobile.habittracker.viewmodel.HabitViewModel
+import nulp.mobile.habittracker.viewmodel.HabitsViewModel
 
 
 class HabitsListFragment : Fragment() {
 
-    private lateinit var hViewModel : HabitViewModel
+    private lateinit var hViewModel : HabitsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +26,7 @@ class HabitsListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_habit_list, container, false)
         val habitsRecycleView = view.findViewById<RecyclerView>(R.id.habitsRycycleView);
         val habitAdapter = HabitAdapter()
-        hViewModel = ViewModelProvider(this).get(HabitViewModel::class.java)
+        hViewModel = ViewModelProvider(this).get(HabitsViewModel::class.java)
         hViewModel.getHabits().observe(viewLifecycleOwner, Observer{
             habitAdapter.setData(it)
         })

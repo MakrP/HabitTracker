@@ -16,14 +16,14 @@ import kotlinx.android.synthetic.main.fragment_add_habit.view.details_edit
 import kotlinx.android.synthetic.main.fragment_habit_details.view.*
 import nulp.mobile.habittracker.R
 import nulp.mobile.habittracker.entity.Habit
-import nulp.mobile.habittracker.viewmodel.HabitViewModel
+import nulp.mobile.habittracker.viewmodel.HabitsViewModel
 
 
 class HabitDetailsFragment : Fragment() {
 
     private val args by navArgs<HabitDetailsFragmentArgs>()
     private lateinit var habit : Habit
-    private lateinit var habitViewModel : HabitViewModel
+    private lateinit var habitViewModel : HabitsViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +32,7 @@ class HabitDetailsFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_habit_details, container, false)
         habit = args.habit
-        habitViewModel = ViewModelProvider(this).get(HabitViewModel::class.java)
+        habitViewModel = ViewModelProvider(this).get(HabitsViewModel::class.java)
         view.details_habit_title.text = habit.title
         view.detail_cancel.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_habitDetails_to_habits)
