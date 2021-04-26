@@ -1,15 +1,13 @@
 package nulp.mobile.habittracker.fragments.add
 
+import android.app.TimePickerDialog
 import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.LightingColorFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -20,10 +18,12 @@ import kotlinx.android.synthetic.main.fragment_add_habit.view.*
 import nulp.mobile.habittracker.R
 import nulp.mobile.habittracker.databinding.FragmentAddHabitBinding
 import nulp.mobile.habittracker.entity.Habit
+import nulp.mobile.habittracker.notification.NotificationUtils
 import nulp.mobile.habittracker.viewmodel.HabitViewModel
 import nulp.mobile.habittracker.viewmodel.HabitsViewModel
 import petrov.kristiyan.colorpicker.ColorPicker
 import petrov.kristiyan.colorpicker.ColorPicker.OnChooseColorListener
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -59,9 +59,7 @@ class AddHabitFragment : Fragment() {
             insertHabitInDatabase();
             Navigation.findNavController(it).navigate(R.id.action_addHabits_to_habits)
         }
-        view.regularityContainer.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_addHabits_to_regularityChoosing)
-        }
+
 
         view.goalConteiner.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_addHabits_to_goalChoosing)
@@ -80,6 +78,24 @@ class AddHabitFragment : Fragment() {
                 }
             })
         }
+
+        val cal = Calendar.getInstance()
+
+        view.remind_me_switch.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+                habitViewModel.notificationTime.value = cal.time
+            }
+            TimePickerDialog(requireContext(), timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+        }
+
+        habitViewModel.notificationTime.observe(viewLifecycleOwner, Observer {
+            val format = SimpleDateFormat("HH-mm")
+            view.choosed_time_tv.text =  format.format(it)
+        })
+
         return view
     }
 
@@ -90,8 +106,11 @@ class AddHabitFragment : Fragment() {
             Date(),"#4343",
         habitViewModel.goal.value!!,0.0);
         habitsViewModel.createHabit(habit)
+        NotificationUtils().setNotification(habitViewModel.notificationTime.value!!.time,requireActivity(),habit.title,habit.motivation)
         Toast.makeText(requireContext(), "Added to db", Toast.LENGTH_SHORT).show()
     }
+
+
 
 
 

@@ -7,15 +7,16 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import nulp.mobile.habittracker.dao.HabitDao
 import nulp.mobile.habittracker.db.convertor.DateConverter
+import nulp.mobile.habittracker.entity.Execution
 //import nulp.mobile.habittracker.dao.HabitExecutionDao
 import nulp.mobile.habittracker.entity.Habit
 //import nulp.mobile.habittracker.entity.HabitExecution
 
-@Database(entities = [Habit::class],version = 1,exportSchema = false)
+@Database(entities = [Habit::class, Execution::class],version = 1,exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class HabitDatabase : RoomDatabase() {
     abstract fun habitDao() : HabitDao
-//    abstract fun habitExecutionDao() : HabitExecutionDao
+
     companion object {
         @Volatile
         private var INSTANCE : HabitDatabase? = null

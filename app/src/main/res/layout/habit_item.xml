@@ -38,53 +38,53 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/done5"
+                android:id="@+id/done_today"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/done_percent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/ic_baseline_undone_mark"
-            />
+                />
 
 
 
 
             <ImageView
-                android:id="@+id/done4"
+                android:id="@+id/done_tomorrow"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/done_percent"
-                app:layout_constraintEnd_toStartOf="@+id/done5"
+                app:layout_constraintEnd_toStartOf="@+id/done_today"
                 android:background="@drawable/ic_baseline_undone_mark"
                 />
 
             <ImageView
-                android:id="@+id/done3"
+                android:id="@+id/done_2_days_ago"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/done_percent"
-                app:layout_constraintEnd_toStartOf="@+id/done4"
+                app:layout_constraintEnd_toStartOf="@+id/done_tomorrow"
                 android:background="@drawable/ic_baseline_undone_mark" />
 
             <ImageView
-                android:id="@+id/done2"
+                android:id="@+id/done_3_days_ago"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/done_percent"
-                app:layout_constraintEnd_toStartOf="@+id/done3"
+                app:layout_constraintEnd_toStartOf="@+id/done_2_days_ago"
                 android:background="@drawable/ic_baseline_undone_mark"/>
 
             <ImageView
-                android:id="@+id/done1"
+                android:id="@+id/done_4_days_ago"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/done_percent"
-                app:layout_constraintEnd_toStartOf="@+id/done2"
+                app:layout_constraintEnd_toStartOf="@+id/done_3_days_ago"
                 android:background="@drawable/ic_baseline_undone_mark"/>
 
             <TextView
@@ -105,7 +105,7 @@
                 android:layout_width="25dp"
                 android:layout_height="28dp"
                 app:layout_constraintBottom_toBottomOf="@+id/habit_title"
-                app:layout_constraintEnd_toEndOf="@+id/done5"
+                app:layout_constraintEnd_toEndOf="@+id/done_today"
                 app:srcCompat="@drawable/ic_baseline_share" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

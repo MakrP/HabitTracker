@@ -16,5 +16,5 @@ data class Habit(
         val startDate: Date,
         val color: String,
         val goal: Int,
-        val exec: Double
+        var exec: Double
 ) : Parcelable

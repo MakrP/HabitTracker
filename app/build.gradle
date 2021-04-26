@@ -7,7 +7,6 @@ plugins {
 }
 
 
-
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -18,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "nulp.mobile.habittracker"
-        minSdkVersion 26
+        minSdkVersion 27
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -76,5 +75,6 @@ dependencies {
 
     //Color Picker
     implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
+
 
 }

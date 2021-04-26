@@ -25,7 +25,7 @@ class HabitsListFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_habit_list, container, false)
         val habitsRecycleView = view.findViewById<RecyclerView>(R.id.habitsRycycleView);
-        val habitAdapter = HabitAdapter()
+        val habitAdapter = HabitAdapter(this.requireContext())
         hViewModel = ViewModelProvider(this).get(HabitsViewModel::class.java)
         hViewModel.getHabits().observe(viewLifecycleOwner, Observer{
             habitAdapter.setData(it)

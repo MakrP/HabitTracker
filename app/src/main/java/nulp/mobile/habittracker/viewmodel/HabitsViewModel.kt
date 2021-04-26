@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import nulp.mobile.habittracker.db.HabitDatabase
+import nulp.mobile.habittracker.entity.Execution
 import nulp.mobile.habittracker.entity.Habit
+import nulp.mobile.habittracker.entity.HabitsExecution
 import nulp.mobile.habittracker.repository.HabitRepository
 class HabitsViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -42,5 +44,7 @@ class HabitsViewModel(application: Application) : AndroidViewModel(application) 
             repository.updateHabit(habit)
         }
     }
+
+
 }
 
